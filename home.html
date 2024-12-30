@@ -6,10 +6,18 @@
     <title>Personal Page</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            //display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
             margin: 0;
-            padding: 0;
-            color: #333;
+            background-color: #f0f8ff;
+            font-family: Arial, sans-serif;
+        }
+        .cursive-text {
+            font-family: 'Dancing Script', cursive;
+            font-size: 100px;
+            color: #800080;
         }
 
         /* Navigation Bar */
@@ -44,7 +52,7 @@
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(to right, #00BFFF, #000080);
+            background: linear-gradient(to right, #f0f8ff, #c4d4e6);
             color: white;
             text-align: center;
             padding: 3em 1em;
@@ -218,7 +226,8 @@
             padding: 1em;
         }
     </style>
-</head>
+	<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+	</head>
 <body>
 
 <nav>
@@ -229,22 +238,16 @@
         <a href="#skills">Skills</a>
         <a href="#portfolio">Portfolio</a>
         <a href="#contact">Contact</a>
-        <a href="SuryaPalSingh_Resume.pdf" class="cta" target="_blank" rel="noopener noreferrer">Download Resume</a>
+        <a href="D:\PersonalProfile\SuryaPalSingh_Resume.pdf" class="cta" target="_blank" rel="noopener noreferrer">Download Resume</a>
     </div>
 </nav>
 
 <section class="hero" id="home">
-    <h1>Hello, I’m Surya</h1>
-    <p>A Product Manager & Business Analyst Empowering Business Success</p>
-    <div class="buttons">
-	<a href="www.linkedin.com/in/suryaastic" target="_blank" rel="noopener noreferrer">
-	<button>Let’s Connect</button>
-	</a>
-    </div>
+<div class="cursive-text">hello</div>    
 </section>
 
 <section class="about" id="about">
-    <img src="profile.jpeg" alt="Profile Image" width="200" height="200">
+    <img src="D:/PersonalProfile/images/profile.jpeg" alt="Profile Image" width="200" height="200">
     <div class="text">
         <h2>About Me</h2>
         <p>I’m a Product Manager and Business Analyst with a passion for bridging the gap between business needs and technical solutions. My journey began during my MBA when I worked on my family business during the pandemic. Since then, I have led impactful projects, managed cross-functional teams, and delivered exceptional results.</p>
@@ -319,6 +322,7 @@
         </div>
     </div>
 </section>
+
 <section class="contact" id="contact">
     <h2>Contact Me</h2>
     <div class="contact-details">
@@ -328,7 +332,6 @@
         <p><strong>Address:</strong> Lotus Panache, Sector 110, Noida, UP, India</p>
     </div>
 </section>
-
 
 <footer>
     <p>&copy; 2024 Surya Pal Singh. All Rights Reserved.</p>
