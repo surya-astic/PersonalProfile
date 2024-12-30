@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hi, I'm Surya</title>
-    <link rel="icon" href="profile.jpeg" type="image/jpeg">
+    <link rel="icon" href="images/profile.jpeg" type="image/jpeg">
     <style>
         body {
             //display: flex;
@@ -29,9 +29,11 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: sticky;
+            position: fixed;
             top: 0;
+	    width: 100%;
             z-index: 1000;
+	    padding-right: 1.5em;
         }
 
         nav a {
@@ -47,8 +49,9 @@
 
         .cta {
             background-color: #000080;
-            padding: 0.5em 1em;
-            border-radius: 5px;
+            padding: .5em 1em;
+            border-radius: 2px;
+	    margin-right: 3em;
         }
 
         /* Hero Section */
@@ -187,7 +190,7 @@
             border-radius: 5px;
         }
 
-        /* Portfolio Section */
+       /* Portfolio Section */
         .portfolio {
             padding: 3em 1em;
             background-color: #f7f7f7;
@@ -212,18 +215,71 @@
             padding: 1em;
             margin: 1em;
             width: 300px;
-            text-align: justify;
+            text-align: center;
+            cursor: pointer;
+            transition: box-shadow 0.3s ease;
         }
 
         .portfolio .project:hover {
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
+        .project h3 {
+            margin-bottom: 0.5em;
+            font-size: 1.2em;
+        }
+
+        .project .duration {
+            font-size: 0.9em;
+            color: gray;
+        }
+
+        /* Popup Window */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 600px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            padding: 2em;
+            z-index: 1000;
+        }
+
+        .popup h3 {
+            margin-top: 0;
+        }
+
+        .popup .close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 1.5em;
+            font-weight: bold;
+            cursor: pointer;
+            color: gray;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
         /* Contact Section */
         .contact {
             padding: 3em 1em;
             background-color: #ffffff;
-            text-align: center;
+            text-align: justify;
         }
 
         .contact h2 {
@@ -231,27 +287,62 @@
             margin-bottom: 1em;
         }
 
-        .contact form {
-            max-width: 600px;
-            margin: 0 auto;
+        .contact p {
+            font-size: 1.2em;
+            line-height: 1.8;
+            margin-bottom: 2em;
         }
 
-        .contact form input, .contact form textarea {
-            width: 100%;
-            padding: 1em;
-            margin: 0.5em 0;
+        /* Cards */
+        .cards {
+            display: flex;
+            justify-content: center;
+            gap: 4em;
+        }
+
+        .card {
+            width: 200px;
+            height: 120px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             border: 1px solid #ddd;
-            border-radius: 5px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+            background-color: #f7f7f7;
         }
 
-        .contact form button {
-            background-color: #1a1a2e;
-            color: white;
-            padding: 1em;
-            border: none;
-            border-radius: 5px;
-            font-size: 1em;
-            cursor: pointer;
+        .card img {
+            width: 50px;
+            height: 50px;
+        }
+
+        .card:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .card:hover .card-link {
+            opacity: 1;
+        }
+
+        .card-link {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.9em;
+            color: #1a1a2e;
+            opacity: 0;
+            transition: opacity 0.3s;
+            text-decoration: none;
+        }
+
+        .card-link:hover {
+            text-decoration: underline;
         }
 
         footer {
@@ -349,48 +440,123 @@
 <section class="portfolio" id="portfolio">
     <h2>Portfolio</h2>
     <div class="projects">
-        <div class="project">
-            <h3>Arklyz group (Retail-store/E-com)</h3>
-    <ul>
-        <li>Gathered requirements and designed reporting attributes for retail sales, inventory, and purchase orders.</li>
-        <li>Analyzed and modeled sales, inventory, and purchase order data to support star schema design using fact and dimension data structures.</li>
-        <li>Designed and implemented a data warehouse in ClickHouse; utilized Dagster to develop and schedule ETL workflows for seamless data integration.</li>
-        <li>Built interactive dashboards in Power BI to visualize sales, inventory, and purchase order metrics, enabling real-time decision-making and actionable insights.</li>
-        <li>Coordinated with cross-functional teams, ensuring alignment of business needs and technical deliverables for retail data reporting solutions.</li>
-    </ul>
+        <div class="project" data-details="arklyz">
+            <h3>Arklyz Group</h3>
+            <div class="duration">2021 - 2022</div>
         </div>
-        <div class="project">
+        <div class="project" data-details="mankind">
             <h3>Mankind Pharma</h3>
-	<ul>
-           <li>Streamlined product features for MR-Manager processes, including daily visit records, expense approvals, and inventory tracking, achieving end-to-end digital transformation.</li>
-	   <li>Collaborated with technical teams, vendors, and stakeholders to ensure timely deliverables.</li>
-	    <li>Worked on SOW document preparation & requirement freezing beforehand. Also, worked on tracking the project lifecycle from grooming to development to UAT and then Go-Live.</li>
-            <li>Tested SQL queries to guide API logic, utilized JIRA for tracking, and documented key highlights in Confluence.</li>
-	    <li>Managed change requests by communicating timeline impacts to stakeholders.</li>
-	</ul>
+            <div class="duration">2020 - 2021</div>
         </div>
-        <div class="project">
-            <h3>TVS motors (Automobile)</h3>
-	<ul>
-	   <li>Conceptualized the solution features of platform to address the grievances in finance queries.</li>
-	   <li>Developed roadmap and work breakdown structure for team deliverables.</li>
-	   <li>Finalized SQL queries and views for Tableau dashboards for grievance portal.</li>
-	   <li>Decreased query resolution time by 50%.</li>
-	</ul>
+        <div class="project" data-details="tvs">
+            <h3>TVS Motors</h3>
+            <div class="duration">2019 - 2020</div>
         </div>
     </div>
 </section>
+
+<!-- Overlay -->
+<div class="overlay"></div>
+
+<!-- Popup -->
+<div class="popup" id="popup">
+    <span class="close">&times;</span>
+    <div id="popup-content"></div>
+</div>
+
+<script>
+    // Project Details
+    const projectDetails = {
+        arklyz: `
+            <h3>Arklyz Group (Retail-store/E-com)</h3>
+            <ul>
+                <li>Gathered requirements and designed reporting attributes for retail sales, inventory, and purchase orders.</li>
+                <li>Analyzed and modeled sales, inventory, and purchase order data to support star schema design using fact and dimension data structures.</li>
+                <li>Designed and implemented a data warehouse in ClickHouse; utilized Dagster to develop and schedule ETL workflows for seamless data integration.</li>
+                <li>Built interactive dashboards in Power BI to visualize sales, inventory, and purchase order metrics, enabling real-time decision-making and actionable insights.</li>
+                <li>Coordinated with cross-functional teams, ensuring alignment of business needs and technical deliverables for retail data reporting solutions.</li>
+            </ul>
+        `,
+        mankind: `
+            <h3>Mankind Pharma</h3>
+            <ul>
+                <li>Streamlined product features for MR-Manager processes, including daily visit records, expense approvals, and inventory tracking, achieving end-to-end digital transformation.</li>
+                <li>Collaborated with technical teams, vendors, and stakeholders to ensure timely deliverables.</li>
+                <li>Worked on SOW document preparation & requirement freezing beforehand. Also, worked on tracking the project lifecycle from grooming to development to UAT and then Go-Live.</li>
+                <li>Tested SQL queries to guide API logic, utilized JIRA for tracking, and documented key highlights in Confluence.</li>
+                <li>Managed change requests by communicating timeline impacts to stakeholders.</li>
+            </ul>
+        `,
+        tvs: `
+            <h3>TVS Motors (Automobile)</h3>
+            <ul>
+                <li>Conceptualized the solution features of the platform to address grievances in finance queries.</li>
+                <li>Developed roadmap and work breakdown structure for team deliverables.</li>
+                <li>Finalized SQL queries and views for Tableau dashboards for grievance portal.</li>
+                <li>Decreased query resolution time by 50%.</li>
+            </ul>
+        `
+    };
+
+    // Popup and Overlay Elements
+    const popup = document.getElementById('popup');
+    const overlay = document.querySelector('.overlay');
+    const popupContent = document.getElementById('popup-content');
+    const closeBtn = document.querySelector('.popup .close');
+
+    // Handle Project Click
+    document.querySelectorAll('.project').forEach(project => {
+        project.addEventListener('click', () => {
+            const details = project.dataset.details;
+            popupContent.innerHTML = projectDetails[details];
+            popup.style.display = 'block';
+            overlay.style.display = 'block';
+        });
+    });
+
+    // Close Popup
+    closeBtn.addEventListener('click', () => {
+        popup.style.display = 'none';
+        overlay.style.display = 'none';
+    });
+
+    overlay.addEventListener('click', () => {
+        popup.style.display = 'none';
+        overlay.style.display = 'none';
+    });
+</script>
 
 <section class="contact" id="contact">
-    <h2>Contact Me</h2>
-    <div class="contact-details">
-        <p><strong>Email:</strong> <a href="mailto:your.email@example.com">your.email@gmail.com</a></p>
-        <p><strong>Phone:</strong> <a href="tel:+91-9707818993">+91-9707818993</a></p>
-        <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/suryaastic" target="_blank" rel="noopener noreferrer">linkedin.com/in/suryaastic</a></p>
-        <p><strong>Address:</strong> Lotus Panache, Sector 110, Noida, UP, India</p>
+    <h2>Thanks for Visiting 🙏🏼</h2>
+    <p>
+        Reach out to me 🗨️ <br><br>
+        I'm excited to embrace new challenges and collaborate with forward-thinking teams to create outstanding products. Don't hesitate to connect with me on LinkedIn or via email—I'd love to explore how I can contribute to the success of your organization. <br>
+        Looking forward to connecting!<br>
+        <strong>Email:</strong> <a href="mailto:singhsurya4042@gmail.com"><strong>singhsurya4042@gmail.com</strong></a>
+    </p>
+    <div class="cards">
+        <!-- LinkedIn -->
+        <div class="card" onclick="window.open('https://www.linkedin.com/in/suryaastic', '_blank')">
+            <img src="linkedin.png" alt="LinkedIn">
+            <a class="card-link" href="https://www.linkedin.com/in/suryaastic" target="_blank">LinkedIn</a>
+        </div>
+        <!-- GitHub -->
+        <div class="card" onclick="window.open('https://github.com/surya-astic', '_blank')">
+            <img src="github.png" alt="GitHub">
+            <a class="card-link" href="https://github.com/surya-astic" target="_blank">GitHub</a>
+        </div>
+        <!-- Instagram -->
+        <div class="card" onclick="window.open('https://www.instagram.com/suryaastic', '_blank')">
+            <img src="instagram.png" alt="Instagram">
+            <a class="card-link" href="https://www.instagram.com/suryaastic" target="_blank">Instagram</a>
+        </div>
+        <!-- Resume -->
+        <div class="card" onclick="window.open('resume.pdf', '_blank')">
+            <img src="resume.png" alt="Resume">
+            <a class="card-link" href="SuryaPalSingh_Resume.pdf" target="_blank">Resume</a>
+        </div>
     </div>
 </section>
-
 <footer>
     <p>&copy; 2024 Surya Pal Singh. All Rights Reserved.</p>
 </footer>
