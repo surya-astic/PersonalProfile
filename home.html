@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personal Page</title>
+    <title>Hi, I'm Surya</title>
     <style>
         body {
             //display: flex;
@@ -92,7 +92,7 @@
             display: flex;
             align-items: center;
             padding: 3em 1em;
-            background-color: #f7f7f7;
+            background-color: #add8e6;
         }
 
         .about img {
@@ -107,20 +107,56 @@
         }
 
         .about h2 {
-            font-size: 2em;
+            font-size: 1.2em;
             margin-bottom: 0.5em;
         }
 
         .about p {
             font-size: 1em;
             line-height: 1.5;
+	    text-align: justify;
+        }
+	.about .academics {
+            //display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
-        /* Skills Section */
+        .about .academic {
+            background-color: #ffe4e1;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 1em;
+            margin: 1em;
+            width: 300px;
+            text-align: justify;
+        }
+
+        .about .academic:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+
+          /* Skills Section */
         .skills {
+            display: flex; /* Enables flex layout */
+            justify-content: space-between; /* Space between children */
+            align-items: flex-start; /* Aligns items at the top */
             padding: 3em 1em;
             background-color: #ffffff;
-            text-align: center;
+            text-align: left; /* Left-align text for better readability */
+        }
+
+        .skills .text,
+        .skills .skill-list {
+            flex: 1; /* Distributes space evenly */
+            margin: 0 1em; /* Adds spacing between columns */
+        }
+
+        .skills p {
+            font-size: 1em;
+            line-height: 1.5;
+            text-align: justify;
         }
 
         .skills h2 {
@@ -129,7 +165,7 @@
         }
 
         .skills .skill {
-            margin: 1em 0;
+            margin: 0.5em 0;
         }
 
         .skills .skill-name {
@@ -142,8 +178,6 @@
             height: 20px;
             margin: 0.5em 0;
             width: 80%;
-            margin-left: auto;
-            margin-right: auto;
         }
 
         .skills .progress-bar {
@@ -231,7 +265,7 @@
 <body>
 
 <nav>
-    <div></div>
+    <div>Hi, I'm Surya</div>
     <div>
         <a href="#home">Home</a>
         <a href="#about">About</a>
@@ -249,41 +283,64 @@
 <section class="about" id="about">
     <img src="profile.jpeg" alt="Profile Image" width="200" height="200">
     <div class="text">
-        <h2>About Me</h2>
-        <p>I’m a Product Manager and Business Analyst with a passion for bridging the gap between business needs and technical solutions. My journey began during my MBA when I worked on my family business during the pandemic. Since then, I have led impactful projects, managed cross-functional teams, and delivered exceptional results.</p>
+        <h2>Product Leader | Data-Driven | User-Centric Design Enthusiast</h2>
+        <p>A data-driven Product Manager with a passion for bridging the gap between business needs and technical solutions. My journey began during my MBA when I worked on my family business during the pandemic. Since then, I have led impactful projects, managed cross-functional teams, and delivered exceptional results. I'm passionate about leveraging my diverse skillset to create impactful, user-centric solutions.</p>
     </div>
+    <div class="academics">
+	<div class="academic">
+	<h3>Scholastic Achievements</h3>
+	<p><b>IIM Sirmaur | 7.14 CGPA | 2019-21</b> <br>
+	MBA, Operations and Analytics</p>
+	<p><b>NIT Silchar | 7.5 CGPA | 2012-16</b><br>
+	BTech., Electronics and Communication Engineering</p>
+	</div>
+	</div>
 </section>
 
 <section class="skills" id="skills">
-    <h2>Skills & Tools</h2>
-    <div class="skill">
-        <div class="skill-name">Product Management</div>
-        <div class="progress">
-            <div class="progress-bar" style="width: 80%;"></div>
-        </div>
+    <!-- Core Strengths Column -->
+    <div class="text">
+        <h2>Core Strengths</h2>
+        <p>
+            <b>Turning Data into Impact:</b> I leverage both numbers and insights to guide decisions throughout the product journey, ensuring measurable results.<br>
+            <b>Building Bridges Across Teams:</b> Collaboration is at the heart of my work—bringing together diverse perspectives to deliver shared success.<br>
+            <b>Designing for Users, Always:</b> By deeply understanding user needs, I craft experiences that resonate, engage, and delight.<br>
+            <b>Tech-Savvy Problem Solver:</b> I seamlessly connect business goals with technical possibilities.
+        </p>
     </div>
-    <div class="skill">
-        <div class="skill-name">Microsoft Office(Word, PowerPoint, Excel)</div>
-        <div class="progress">
-            <div class="progress-bar" style="width: 95%;"></div>
+
+    <!-- Skills & Tools Column -->
+    <div class="skill-list">
+        <h2>Skills & Tools</h2>
+        <div class="skill">
+            <div class="skill-name">Product Management</div>
+            <div class="progress">
+                <div class="progress-bar" style="width: 80%;"></div>
+            </div>
         </div>
-    </div>
-    <div class="skill">
-        <div class="skill-name">MySQL</div>
-        <div class="progress">
-            <div class="progress-bar" style="width: 60%;"></div>
+        <div class="skill">
+            <div class="skill-name">Microsoft Office (Word, PowerPoint, Excel)</div>
+            <div class="progress">
+                <div class="progress-bar" style="width: 95%;"></div>
+            </div>
         </div>
-    </div>
-    <div class="skill">
-        <div class="skill-name">Business Analysis</div>
-        <div class="progress">
-            <div class="progress-bar" style="width: 90%;"></div>
+        <div class="skill">
+            <div class="skill-name">MySQL</div>
+            <div class="progress">
+                <div class="progress-bar" style="width: 60%;"></div>
+            </div>
         </div>
-    </div>
-    <div class="skill">
-        <div class="skill-name">Jira/Confluence & Agile Tools</div>
-        <div class="progress">
-            <div class="progress-bar" style="width: 85%;"></div>
+        <div class="skill">
+            <div class="skill-name">Business Analysis</div>
+            <div class="progress">
+                <div class="progress-bar" style="width: 90%;"></div>
+            </div>
+        </div>
+        <div class="skill">
+            <div class="skill-name">Jira/Confluence & Agile Tools</div>
+            <div class="progress">
+                <div class="progress-bar" style="width: 85%;"></div>
+            </div>
         </div>
     </div>
 </section>
