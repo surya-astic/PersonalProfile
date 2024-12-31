@@ -59,7 +59,7 @@
             background: linear-gradient(to right, #f0f8ff, #000080);
             color: white;
             text-align: center;
-            padding: 4em 1em;
+            padding: 3em 1em;
         }
 
         .hero h1 {
@@ -93,11 +93,11 @@
 
         /* About Section */
         .about {
-            background: linear-gradient(to right, #696969, #DA70D6);
+            //background: linear-gradient(to right, #FFA07A, #D3D3D3);
 	    display: flex;
             align-items: center;
-            padding: 3em 1em;
-            //background-color: #add8e6;
+            padding: 2em .5em;
+            background-color: white;
         }
 
         .about img {
@@ -128,7 +128,7 @@
         }
 
         .about .academic {
-            background-color: #ffe4e1;
+            background-color: white;
             border: 1px solid #ddd;
             border-radius: 5px;
             padding: 1em;
@@ -138,7 +138,7 @@
         }
 
         .about .academic:hover {
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
         }
 
 
@@ -195,7 +195,7 @@
 	/* Portfolio Section */
         .portfolio {
             background: linear-gradient(to right, #f7f7f7, #FFDEAD);
-	    padding: 3em 1em;
+	    padding: 2em .5em;
           //background-color: #f7f7f7;
         }
 
@@ -396,8 +396,16 @@
 <section class="about" id="about">
     <img src="profile.jpeg" alt="Profile Image" width="200" height="200">
     <div class="text">
-        <h2>Product Leader | Data-Driven | User-Centric Design Enthusiast</h2>
-        <p>A data-driven Product Manager with a passion for bridging the gap between business needs and technical solutions. My journey began during my MBA when I worked on my family business during the pandemic. Since then, I have led impactful projects, managed cross-functional teams, and delivered exceptional results. I'm passionate about leveraging my diverse skillset to create impactful, user-centric solutions.</p>
+        <h2>An Emerging Product Leader based out of Noida</h2>
+        <p>An User-focused, data driven, stakeholder-savvy, and technically-sophisticated Product Manager with over 4+ years of experience and proven ability to develop and drive the product roadmap while building relationships with stakeholders to develop and execute product vision.<br>
+Competencies include: <br>
+-Problem Solving <br>
+-User experience <br>
+-Product Training <br>
+-Product launch planning <br>
+-Communication skills <br>
+-Agile methodology <br><br>
+Currently building Industry leading Digital Product to make complex operations simpler.</p>
     </div>
     <div class="academics">
 	<div class="academic">
@@ -409,6 +417,74 @@
 	</div>
 	</div>
 </section>
+
+<section class="portfolio" id="portfolio">
+        <h2>Portfolio</h2>
+        <div class="projects">
+            <div class="project" data-url="https://drive.google.com/file/d/1VguyAO7mK_Necb--lyOnnWL2MmCz5Jo1/preview">
+                <h3>Arklyz Group</h3>
+                <div class="duration">Oct'24 - Present</div>
+            </div>
+            <div class="project" data-url="https://drive.google.com/file/d/1VQtVVtmSpY-f1jeZa8vsR_HuQ5GNTFY8/preview">
+                <h3>Mankind Pharma</h3>
+                <div class="duration">Apr'22 - Oct'24</div>
+            </div>
+            <div class="project" data-url="https://drive.google.com/file/d/1K18XmakWas-AHODVRAniY6NWX-4ZQm7f/preview">
+                <h3>TVS Motors</h3>
+                <div class="duration">Apr'21 - Mar'22</div>
+            </div>
+        </div>
+	<h2>Personal work</h2>
+	<div class="projects">
+            <div class="project" data-url="https://drive.google.com/file/d/1VQtVVtmSpY-f1jeZa8vsR_HuQ5GNTFY8/preview">
+                <h3>Whatsapp</h3>
+                <div class="duration">July'24 - Aug'24</div>
+            </div>
+	</div>
+    </section>
+
+    <!-- Overlay -->
+    <div class="overlay"></div>
+
+    <!-- Popup -->
+    <div class="popup" id="popup">
+        <span class="close">&times;</span>
+        <div class="overlay-iframe"></div> <!-- Overlay to hide pop-out icon -->
+        <iframe id="popup-frame"></iframe>
+    </div>
+
+    <script>
+        // Popup and Overlay Elements
+        const popup = document.getElementById('popup');
+        const popupFrame = document.getElementById('popup-frame');
+        const overlay = document.querySelector('.overlay');
+        const closeBtn = document.querySelector('.popup .close');
+
+        // Handle Project Click
+        document.querySelectorAll('.project').forEach(project => {
+            project.addEventListener('click', () => {
+                const url = project.dataset.url;
+                popupFrame.src = url;
+                popup.style.display = 'block';
+                overlay.style.display = 'block';
+            });
+        });
+
+        // Close Popup
+        closeBtn.addEventListener('click', () => {
+            popup.style.display = 'none';
+            overlay.style.display = 'none';
+            popupFrame.src = ''; // Clear iframe source
+        });
+
+        overlay.addEventListener('click', () => {
+            popup.style.display = 'none';
+            overlay.style.display = 'none';
+            popupFrame.src = ''; // Clear iframe source I'm excited to embrace new challenges and collaborate with forward-thinking teams to create outstanding products. Don't hesitate to connect with me on LinkedIn or via email—I'd love to explore how I can contribute to the success of your organization.
+        });
+    </script>
+
+
 
 <section class="skills" id="skills">
     <!-- Core Strengths Column -->
@@ -458,65 +534,6 @@
     </div>
 </section>
 
-<section class="portfolio" id="portfolio">
-        <h2>Portfolio</h2>
-        <div class="projects">
-            <div class="project" data-url="https://drive.google.com/file/d/1VguyAO7mK_Necb--lyOnnWL2MmCz5Jo1/preview">
-                <h3>Arklyz Group</h3>
-                <div class="duration">Oct'24 - Present</div>
-            </div>
-            <div class="project" data-url="">
-                <h3>Mankind Pharma</h3>
-                <div class="duration">Apr'22 - Oct'24</div>
-            </div>
-            <div class="project" data-url="https://drive.google.com/file/d/1K18XmakWas-AHODVRAniY6NWX-4ZQm7f/preview">
-                <h3>TVS Motors</h3>
-                <div class="duration">Apr'21 - Mar'22</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Overlay -->
-    <div class="overlay"></div>
-
-    <!-- Popup -->
-    <div class="popup" id="popup">
-        <span class="close">&times;</span>
-        <div class="overlay-iframe"></div> <!-- Overlay to hide pop-out icon -->
-        <iframe id="popup-frame"></iframe>
-    </div>
-
-    <script>
-        // Popup and Overlay Elements
-        const popup = document.getElementById('popup');
-        const popupFrame = document.getElementById('popup-frame');
-        const overlay = document.querySelector('.overlay');
-        const closeBtn = document.querySelector('.popup .close');
-
-        // Handle Project Click
-        document.querySelectorAll('.project').forEach(project => {
-            project.addEventListener('click', () => {
-                const url = project.dataset.url;
-                popupFrame.src = url;
-                popup.style.display = 'block';
-                overlay.style.display = 'block';
-            });
-        });
-
-        // Close Popup
-        closeBtn.addEventListener('click', () => {
-            popup.style.display = 'none';
-            overlay.style.display = 'none';
-            popupFrame.src = ''; // Clear iframe source
-        });
-
-        overlay.addEventListener('click', () => {
-            popup.style.display = 'none';
-            overlay.style.display = 'none';
-            popupFrame.src = ''; // Clear iframe source I'm excited to embrace new challenges and collaborate with forward-thinking teams to create outstanding products. Don't hesitate to connect with me on LinkedIn or via email—I'd love to explore how I can contribute to the success of your organization.
-        });
-    </script>
-
 <section class="contact" id="contact">
     <h2>Thanks for Visiting 🙏🏼</h2>
     <p>
@@ -542,7 +559,7 @@
         </div>
         <!-- Resume -->
         <div class="card" onclick="window.open('SuryaPalSingh_Resume.pdf', '_blank')">
-            <img src="resume.png" alt="Resume">
+            <img src="images/resume.png" alt="Resume">
             <a class="card-link" href="SuryaPalSingh_Resume.pdf" target="_blank">Resume</a>
         </div>
     </div>
