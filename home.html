@@ -56,10 +56,10 @@
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(to right, #f0f8ff, #c4d4e6);
+            background: linear-gradient(to right, #f0f8ff, #000080);
             color: white;
             text-align: center;
-            padding: 3em 1em;
+            padding: 4em 1em;
         }
 
         .hero h1 {
@@ -69,7 +69,7 @@
 
         .hero p {
             font-size: 1.2em;
-            margin: 0.5em 0;
+            margin: 1em 0;
         }
 
         .hero .buttons {
@@ -93,10 +93,11 @@
 
         /* About Section */
         .about {
-            display: flex;
+            background: linear-gradient(to right, #696969, #DA70D6);
+	    display: flex;
             align-items: center;
             padding: 3em 1em;
-            background-color: #add8e6;
+            //background-color: #add8e6;
         }
 
         .about img {
@@ -143,11 +144,12 @@
 
           /* Skills Section */
         .skills {
-            display: flex; /* Enables flex layout */
+            background: linear-gradient(to right, #f7f7f7, #DA70D6);
+	    display: flex; /* Enables flex layout */
             justify-content: space-between; /* Space between children */
             align-items: flex-start; /* Aligns items at the top */
             padding: 3em 1em;
-            background-color: #ffffff;
+            //background-color: #ffffff;
             text-align: left; /* Left-align text for better readability */
         }
 
@@ -190,10 +192,11 @@
             border-radius: 5px;
         }
 
-       /* Portfolio Section */
+	/* Portfolio Section */
         .portfolio {
-            padding: 3em 1em;
-            background-color: #f7f7f7;
+            background: linear-gradient(to right, #f7f7f7, #FFDEAD);
+	    padding: 3em 1em;
+          //background-color: #f7f7f7;
         }
 
         .portfolio h2 {
@@ -209,7 +212,7 @@
         }
 
         .portfolio .project {
-            background-color: white;
+            background-color: #000080;
             border: 1px solid #ddd;
             border-radius: 5px;
             padding: 1em;
@@ -218,6 +221,7 @@
             text-align: center;
             cursor: pointer;
             transition: box-shadow 0.3s ease;
+	    color: white;
         }
 
         .portfolio .project:hover {
@@ -231,37 +235,53 @@
 
         .project .duration {
             font-size: 0.9em;
-            color: gray;
+            color: white;
         }
 
         /* Popup Window */
         .popup {
             display: none;
             position: fixed;
-            top: 50%;
+            top: 10%;
             left: 50%;
-            transform: translate(-50%, -50%);
+            transform: translate(-50%, 0);
             width: 90%;
-            max-width: 600px;
+            max-width: 800px;
+            height: 80%;
             background-color: white;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            padding: 2em;
+            overflow: hidden;
             z-index: 1000;
         }
 
-        .popup h3 {
-            margin-top: 0;
+        .popup iframe {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            border: none;
+        }
+
+        .overlay-iframe {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50px;
+            height: 50px;
+            background: white;
+            z-index: 2;
         }
 
         .popup .close {
             position: absolute;
             top: 10px;
-            right: 15px;
+            right: 20px;
             font-size: 1.5em;
             font-weight: bold;
             cursor: pointer;
             color: gray;
+            z-index: 1001;
         }
 
         .overlay {
@@ -274,11 +294,12 @@
             background-color: rgba(0, 0, 0, 0.5);
             z-index: 999;
         }
-
+       
         /* Contact Section */
         .contact {
-            padding: 3em 1em;
-            background-color: #ffffff;
+            background: linear-gradient(to right, #DB7093, #FFA07A);
+	    padding: 3em 1em;
+            //background-color: #ffffff;
             text-align: justify;
         }
 
@@ -438,100 +459,69 @@
 </section>
 
 <section class="portfolio" id="portfolio">
-    <h2>Portfolio</h2>
-    <div class="projects">
-        <div class="project" data-details="arklyz">
-            <h3>Arklyz Group</h3>
-            <div class="duration">Oct'24 - Present</div>
+        <h2>Portfolio</h2>
+        <div class="projects">
+            <div class="project" data-url="https://drive.google.com/file/d/1VguyAO7mK_Necb--lyOnnWL2MmCz5Jo1/preview">
+                <h3>Arklyz Group</h3>
+                <div class="duration">Oct'24 - Present</div>
+            </div>
+            <div class="project" data-url="">
+                <h3>Mankind Pharma</h3>
+                <div class="duration">Apr'22 - Oct'24</div>
+            </div>
+            <div class="project" data-url="https://drive.google.com/file/d/1K18XmakWas-AHODVRAniY6NWX-4ZQm7f/preview">
+                <h3>TVS Motors</h3>
+                <div class="duration">Apr'21 - Mar'22</div>
+            </div>
         </div>
-        <div class="project" data-details="mankind">
-            <h3>Mankind Pharma</h3>
-            <div class="duration">Apr'22 - Oct'24</div>
-        </div>
-        <div class="project" data-details="tvs">
-            <h3>TVS Motors</h3>
-            <div class="duration">Apr'21 - Mar'22</div>
-        </div>
+    </section>
+
+    <!-- Overlay -->
+    <div class="overlay"></div>
+
+    <!-- Popup -->
+    <div class="popup" id="popup">
+        <span class="close">&times;</span>
+        <div class="overlay-iframe"></div> <!-- Overlay to hide pop-out icon -->
+        <iframe id="popup-frame"></iframe>
     </div>
-</section>
 
-<!-- Overlay -->
-<div class="overlay"></div>
+    <script>
+        // Popup and Overlay Elements
+        const popup = document.getElementById('popup');
+        const popupFrame = document.getElementById('popup-frame');
+        const overlay = document.querySelector('.overlay');
+        const closeBtn = document.querySelector('.popup .close');
 
-<!-- Popup -->
-<div class="popup" id="popup">
-    <span class="close">&times;</span>
-    <div id="popup-content"></div>
-</div>
-
-<script>
-    // Project Details
-    const projectDetails = {
-        arklyz: `
-            <h3>Arklyz Group (Retail-store/E-com)</h3>
-            <ul>
-                <li>Gathered requirements and designed reporting attributes for retail sales, inventory, and purchase orders.</li>
-                <li>Analyzed and modeled sales, inventory, and purchase order data to support star schema design using fact and dimension data structures.</li>
-                <li>Designed and implemented a data warehouse in ClickHouse; utilized Dagster to develop and schedule ETL workflows for seamless data integration.</li>
-                <li>Built interactive dashboards in Power BI to visualize sales, inventory, and purchase order metrics, enabling real-time decision-making and actionable insights.</li>
-                <li>Coordinated with cross-functional teams, ensuring alignment of business needs and technical deliverables for retail data reporting solutions.</li>
-            </ul>
-        `,
-        mankind: `
-            <h3>Mankind Pharma</h3>
-            <ul>
-                <li>Streamlined product features for MR-Manager processes, including daily visit records, expense approvals, and inventory tracking, achieving end-to-end digital transformation.</li>
-                <li>Collaborated with technical teams, vendors, and stakeholders to ensure timely deliverables.</li>
-                <li>Worked on SOW document preparation & requirement freezing beforehand. Also, worked on tracking the project lifecycle from grooming to development to UAT and then Go-Live.</li>
-                <li>Tested SQL queries to guide API logic, utilized JIRA for tracking, and documented key highlights in Confluence.</li>
-                <li>Managed change requests by communicating timeline impacts to stakeholders.</li>
-            </ul>
-        `,
-        tvs: `
-            <h3>TVS Motors (Automobile)</h3>
-            <ul>
-                <li>Conceptualized the solution features of the platform to address grievances in finance queries.</li>
-                <li>Developed roadmap and work breakdown structure for team deliverables.</li>
-                <li>Finalized SQL queries and views for Tableau dashboards for grievance portal.</li>
-                <li>Decreased query resolution time by 50%.</li>
-            </ul>
-        `
-    };
-
-    // Popup and Overlay Elements
-    const popup = document.getElementById('popup');
-    const overlay = document.querySelector('.overlay');
-    const popupContent = document.getElementById('popup-content');
-    const closeBtn = document.querySelector('.popup .close');
-
-    // Handle Project Click
-    document.querySelectorAll('.project').forEach(project => {
-        project.addEventListener('click', () => {
-            const details = project.dataset.details;
-            popupContent.innerHTML = projectDetails[details];
-            popup.style.display = 'block';
-            overlay.style.display = 'block';
+        // Handle Project Click
+        document.querySelectorAll('.project').forEach(project => {
+            project.addEventListener('click', () => {
+                const url = project.dataset.url;
+                popupFrame.src = url;
+                popup.style.display = 'block';
+                overlay.style.display = 'block';
+            });
         });
-    });
 
-    // Close Popup
-    closeBtn.addEventListener('click', () => {
-        popup.style.display = 'none';
-        overlay.style.display = 'none';
-    });
+        // Close Popup
+        closeBtn.addEventListener('click', () => {
+            popup.style.display = 'none';
+            overlay.style.display = 'none';
+            popupFrame.src = ''; // Clear iframe source
+        });
 
-    overlay.addEventListener('click', () => {
-        popup.style.display = 'none';
-        overlay.style.display = 'none';
-    });
-</script>
+        overlay.addEventListener('click', () => {
+            popup.style.display = 'none';
+            overlay.style.display = 'none';
+            popupFrame.src = ''; // Clear iframe source I'm excited to embrace new challenges and collaborate with forward-thinking teams to create outstanding products. Don't hesitate to connect with me on LinkedIn or via email—I'd love to explore how I can contribute to the success of your organization.
+        });
+    </script>
 
 <section class="contact" id="contact">
     <h2>Thanks for Visiting 🙏🏼</h2>
     <p>
         Reach out to me 🗨️ <br><br>
-        I'm excited to embrace new challenges and collaborate with forward-thinking teams to create outstanding products. Don't hesitate to connect with me on LinkedIn or via email—I'd love to explore how I can contribute to the success of your organization. <br>
-        Looking forward to connecting!<br>
+        Let's Catch up!<br>
         <strong>Email:</strong> <a href="mailto:singhsurya4042@gmail.com"><strong>singhsurya4042@gmail.com</strong></a>
     </p>
     <div class="cards">
